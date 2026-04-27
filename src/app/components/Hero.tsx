@@ -20,9 +20,13 @@ export default function Hero() {
         </div>
 
         {/* Name */}
-        <h1 className="fade-up fade-up-delay-2 text-6xl sm:text-7xl md:text-8xl font-black tracking-tight text-white leading-none uppercase">
-          Gowtham <br />
-          <span className="gradient-text">Revanur</span>
+        <h1 className="fade-up fade-up-delay-2 leading-none uppercase" style={{ fontFamily: "var(--font-bebas)" }}>
+          <span className="block text-[80px] sm:text-[110px] md:text-[140px] text-white tracking-[0.05em]">
+            Gowtham
+          </span>
+          <span className="block text-[80px] sm:text-[110px] md:text-[140px] tracking-[0.05em] gradient-text">
+            Revanur
+          </span>
         </h1>
 
         {/* Telemetry-style tagline */}
