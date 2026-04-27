@@ -16,7 +16,7 @@ export default function Hero() {
           <div className="bg-[#DC0000] px-3 py-1">
             <span className="text-white text-xs font-black tracking-widest uppercase">Scuderia</span>
           </div>
-          <span className="text-xs text-[#555] tracking-[0.3em] uppercase">Atlanta, GA · May 2027</span>
+          <span className="text-xs text-[#555] tracking-[0.3em] uppercase">Atlanta, GA · Georgia State University</span>
         </div>
 
         {/* Name */}
@@ -29,7 +29,7 @@ export default function Hero() {
           </span>
         </h1>
 
-        {/* Telemetry-style tagline */}
+        {/* Tagline */}
         <p className="fade-up fade-up-delay-3 text-base sm:text-lg text-[#888] max-w-xl mx-auto leading-relaxed font-light">
           Graduate CS · Georgia State University
           <br />
@@ -52,6 +52,14 @@ export default function Hero() {
             View Projects
           </a>
           <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-3 border border-[#FFF200]/40 text-[#FFF200] hover:bg-[#FFF200]/10 hover:border-[#FFF200]/70 text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200"
+          >
+            ↓ Download Resume
+          </a>
+          <a
             href="#contact"
             className="px-8 py-3 border border-white/10 hover:border-white/30 text-[#888] hover:text-white text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200"
           >
@@ -65,11 +73,12 @@ export default function Hero() {
             { label: "GPA", value: "3.90" },
             { label: "Status", value: "Hagan Scholar" },
             { label: "Cert", value: "Security+" },
-            { label: "Avail", value: "May 2027" },
-          ].map(({ label, value }) => (
+            { label: "Avail", value: "May 2027", sub: "Open to internships now" },
+          ].map(({ label, value, sub }) => (
             <div key={label} className="px-5 first:pl-0 last:pr-0 text-center">
               <p className="text-[10px] text-[#DC0000] tracking-[0.2em] uppercase mb-1">{label}</p>
               <p className="text-xs text-[#aaa] font-medium">{value}</p>
+              {sub && <p className="text-[9px] text-[#555] mt-0.5">{sub}</p>}
             </div>
           ))}
         </div>
