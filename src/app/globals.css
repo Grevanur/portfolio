@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --accent: #3b82f6;
+  --background: #0d0d0d;
+  --foreground: #f0f0f0;
+  --ferrari-red: #DC0000;
+  --ferrari-yellow: #FFF200;
+  --carbon: #1a1a1a;
 }
 
 body {
@@ -15,20 +17,55 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Carbon fiber texture */
+.carbon-bg {
+  background-color: #111;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.015) 2px,
+      rgba(255,255,255,0.015) 4px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.015) 2px,
+      rgba(255,255,255,0.015) 4px
+    );
+}
+
+/* Racing stripe divider */
+.racing-stripe {
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #DC0000 20%, #DC0000 80%, transparent 100%);
+}
+
+.racing-stripe-full {
+  height: 2px;
+  background: linear-gradient(90deg, #DC0000 60%, #FFF200 60%, #FFF200 70%, transparent 70%);
+}
+
+/* Red glow on hover */
+.card-ferrari:hover {
+  box-shadow: 0 0 0 1px rgba(220, 0, 0, 0.5), 0 8px 32px rgba(220, 0, 0, 0.15);
+}
+
 @keyframes gradient-shift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
 }
 
 @keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes speed-line {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes blink {
@@ -37,25 +74,20 @@ html {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
+  background: linear-gradient(135deg, #DC0000, #ff4444, #FFF200);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient-shift 4s ease infinite;
+  animation: gradient-shift 3s ease infinite;
 }
 
-.fade-up {
-  animation: fade-up 0.7s ease forwards;
-}
-
+.fade-up { animation: fade-up 0.7s ease forwards; }
 .fade-up-delay-1 { animation-delay: 0.1s; opacity: 0; }
 .fade-up-delay-2 { animation-delay: 0.25s; opacity: 0; }
 .fade-up-delay-3 { animation-delay: 0.4s; opacity: 0; }
 .fade-up-delay-4 { animation-delay: 0.55s; opacity: 0; }
 
-.cursor::after {
-  content: '|';
-  animation: blink 1s step-end infinite;
-  color: #3b82f6;
+.speed-line {
+  animation: speed-line 0.8s ease forwards;
 }

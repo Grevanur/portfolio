@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const links = [
   {
     label: "GitHub",
@@ -12,7 +14,7 @@ const links = [
   {
     label: "LinkedIn",
     value: "Gowtham Revanur",
-    href: "https://linkedin.com/in/gowthamrevanur",
+    href: "https://www.linkedin.com/in/gowthamrevanur/",
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -25,12 +27,7 @@ const links = [
     href: "mailto:gautam.revanur@gmail.com",
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-        />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
       </svg>
     ),
   },
@@ -38,59 +35,91 @@ const links = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="px-6 py-24 border-t border-white/[0.06]">
+    <section id="contact" className="px-6 py-24 carbon-bg border-t border-white/[0.04]">
       <div className="max-w-5xl mx-auto">
-        <div className="mb-14">
-          <p className="text-sm text-blue-400 tracking-widest uppercase mb-3">Say Hello</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Contact</h2>
+        <div className="mb-12">
+          <p className="text-[10px] text-[#DC0000] tracking-[0.3em] uppercase mb-3 font-semibold">
+            — Pit Lane
+          </p>
+          <h2 className="text-4xl sm:text-5xl font-black text-white uppercase tracking-tight">Contact</h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="racing-stripe-full mb-12" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Links */}
           <div>
-            <p className="text-[#a1a1a1] text-lg leading-relaxed mb-8">
+            <p className="text-sm text-[#666] leading-relaxed mb-8">
               Open to full-time roles in systems security, embedded engineering, and security research
-              starting May 2027. Always happy to connect.
+              starting May 2027.
             </p>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {links.map(({ label, value, href, icon }) => (
                 <a
                   key={label}
                   href={href}
                   target={href.startsWith("mailto") ? "_self" : "_blank"}
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 bg-white/[0.03] border border-white/[0.07] rounded-xl hover:border-blue-500/40 hover:bg-white/[0.05] transition-all duration-200 group"
+                  className="flex items-center gap-4 p-4 bg-[#111] border border-white/[0.06] hover:border-[#DC0000]/50 hover:bg-[#161616] transition-all duration-200 group"
                 >
-                  <div className="text-[#666] group-hover:text-blue-400 transition-colors duration-200">
+                  <div className="text-[#444] group-hover:text-[#DC0000] transition-colors duration-200">
                     {icon}
                   </div>
                   <div>
-                    <p className="text-xs text-[#555] uppercase tracking-wider mb-0.5">{label}</p>
-                    <p className="text-sm text-[#a1a1a1] group-hover:text-white transition-colors duration-200">
+                    <p className="text-[9px] text-[#444] uppercase tracking-[0.2em] mb-0.5 font-bold">{label}</p>
+                    <p className="text-xs text-[#888] group-hover:text-white transition-colors duration-200 font-medium">
                       {value}
                     </p>
+                  </div>
+                  <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <div className="w-1.5 h-1.5 bg-[#DC0000]" />
                   </div>
                 </a>
               ))}
             </div>
           </div>
 
-          <div className="hidden lg:flex items-center justify-center">
+          {/* Profile photo */}
+          <div className="flex items-center justify-center">
             <div className="relative">
-              <div className="w-48 h-48 rounded-full bg-blue-500/5 border border-blue-500/10 flex items-center justify-center">
-                <div className="w-32 h-32 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
-                  <span className="text-4xl font-bold text-white/10">GR</span>
+              {/* Ferrari red corner accents */}
+              <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-[#DC0000]" />
+              <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-[#DC0000]" />
+              <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-[#DC0000]" />
+              <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-[#DC0000]" />
+
+              <div className="relative w-56 h-56 overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+                <Image
+                  src="/dp.jpeg"
+                  alt="Gowtham Revanur"
+                  fill
+                  className="object-cover"
+                  sizes="224px"
+                />
+              </div>
+
+              {/* Name plate */}
+              <div className="absolute -bottom-4 left-0 right-0 flex">
+                <div className="flex-1 bg-[#DC0000] px-3 py-1.5">
+                  <p className="text-white text-[9px] font-black tracking-[0.2em] uppercase">Gowtham Revanur</p>
+                </div>
+                <div className="bg-[#FFF200] px-2 py-1.5 flex items-center">
+                  <span className="text-black text-[9px] font-black">GSU</span>
                 </div>
               </div>
-              <div className="absolute -top-2 -right-2 w-3 h-3 rounded-full bg-blue-500 animate-pulse" />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto mt-24 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#555]">
-        <span>© 2026 Gowtham Revanur</span>
-        <span>Built with Next.js &amp; Tailwind</span>
+      {/* Footer */}
+      <div className="max-w-5xl mx-auto mt-24 pt-8 border-t border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-4 h-4 bg-[#DC0000]" />
+          <span className="text-[10px] text-[#444] tracking-[0.2em] uppercase">© 2026 Gowtham Revanur</span>
+        </div>
+        <span className="text-[10px] text-[#444] tracking-[0.15em] uppercase">Built with Next.js · Scuderia Portfolio</span>
       </div>
     </section>
   );

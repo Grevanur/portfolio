@@ -1,43 +1,73 @@
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16 text-center">
-      <div className="max-w-3xl mx-auto space-y-6">
-        <p className="fade-up fade-up-delay-1 text-sm font-medium text-blue-400 tracking-widest uppercase">
-          Available May 2027
-        </p>
+    <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-28 pb-16 relative overflow-hidden">
+      {/* Background racing lines */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-0 w-1/3 h-[1px] bg-gradient-to-r from-transparent to-[#DC0000]/20" />
+        <div className="absolute top-1/2 right-0 w-1/3 h-[1px] bg-gradient-to-l from-transparent to-[#DC0000]/20" />
+        <div className="absolute bottom-1/3 left-0 w-1/4 h-[1px] bg-gradient-to-r from-transparent to-[#FFF200]/10" />
+        <div className="absolute top-1/4 left-[10%] w-px h-32 bg-gradient-to-b from-transparent via-[#DC0000]/20 to-transparent" />
+        <div className="absolute top-1/4 right-[10%] w-px h-32 bg-gradient-to-b from-transparent via-[#DC0000]/20 to-transparent" />
+      </div>
 
-        <h1 className="fade-up fade-up-delay-2 text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-tight">
-          Gowtham <br className="hidden sm:block" />
+      <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
+        {/* Race number tag */}
+        <div className="fade-up fade-up-delay-1 inline-flex items-center gap-3">
+          <div className="bg-[#DC0000] px-3 py-1">
+            <span className="text-white text-xs font-black tracking-widest uppercase">Scuderia</span>
+          </div>
+          <span className="text-xs text-[#555] tracking-[0.3em] uppercase">Atlanta, GA · May 2027</span>
+        </div>
+
+        {/* Name */}
+        <h1 className="fade-up fade-up-delay-2 text-6xl sm:text-7xl md:text-8xl font-black tracking-tight text-white leading-none uppercase">
+          Gowtham <br />
           <span className="gradient-text">Revanur</span>
         </h1>
 
-        <p className="fade-up fade-up-delay-3 text-lg sm:text-xl text-[#a1a1a1] max-w-xl mx-auto leading-relaxed">
-          Graduate CS student at Georgia State University. Building secure systems — from{" "}
-          <span className="text-[#ededed]">embedded firmware</span> to{" "}
-          <span className="text-[#ededed]">cloud-native threat detection</span>.
+        {/* Telemetry-style tagline */}
+        <p className="fade-up fade-up-delay-3 text-base sm:text-lg text-[#888] max-w-xl mx-auto leading-relaxed font-light">
+          Graduate CS · Georgia State University
+          <br />
+          <span className="text-[#f0f0f0]">Embedded Systems · Security Engineering · Real-Time Detection</span>
         </p>
 
-        <div className="fade-up fade-up-delay-4 flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        {/* Racing stripe accent */}
+        <div className="fade-up fade-up-delay-3 flex items-center justify-center gap-0 mx-auto w-48">
+          <div className="h-[2px] flex-1 bg-[#DC0000]" />
+          <div className="h-[2px] w-8 bg-[#FFF200]" />
+          <div className="h-[2px] w-4 bg-white/20" />
+        </div>
+
+        {/* CTAs */}
+        <div className="fade-up fade-up-delay-4 flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
           <a
             href="#projects"
-            className="px-6 py-3 bg-blue-500 hover:bg-blue-400 text-white text-sm font-medium rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/25"
+            className="px-8 py-3 bg-[#DC0000] hover:bg-[#ff1111] text-white text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200 hover:shadow-lg hover:shadow-[#DC0000]/30"
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="px-6 py-3 border border-white/10 hover:border-white/30 text-[#a1a1a1] hover:text-white text-sm font-medium rounded-lg transition-all duration-200"
+            className="px-8 py-3 border border-white/10 hover:border-white/30 text-[#888] hover:text-white text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200"
           >
             Get in Touch
           </a>
         </div>
 
-        <div className="fade-up fade-up-delay-4 flex items-center justify-center gap-8 pt-8 text-xs text-[#555] uppercase tracking-wider">
-          <span>Security+</span>
-          <span className="w-1 h-1 rounded-full bg-[#333]" />
-          <span>GPA 3.90</span>
-          <span className="w-1 h-1 rounded-full bg-[#333]" />
-          <span>Hagan Scholar</span>
+        {/* Telemetry stats strip */}
+        <div className="fade-up fade-up-delay-4 flex items-center justify-center divide-x divide-white/10 pt-6">
+          {[
+            { label: "GPA", value: "3.90" },
+            { label: "Status", value: "Hagan Scholar" },
+            { label: "Cert", value: "Security+" },
+            { label: "Avail", value: "May 2027" },
+          ].map(({ label, value }) => (
+            <div key={label} className="px-5 first:pl-0 last:pr-0 text-center">
+              <p className="text-[10px] text-[#DC0000] tracking-[0.2em] uppercase mb-1">{label}</p>
+              <p className="text-xs text-[#aaa] font-medium">{value}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
