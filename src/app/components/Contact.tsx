@@ -55,28 +55,33 @@ export default function Contact() {
             </p>
 
             <div className="space-y-3">
-              {links.map(({ label, value, href, icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("mailto") ? "_self" : "_blank"}
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 bg-[#111] border border-white/[0.06] hover:border-[#DC0000]/50 hover:bg-[#161616] transition-all duration-200 group"
-                >
-                  <div className="text-[#444] group-hover:text-[#DC0000] transition-colors duration-200">
-                    {icon}
-                  </div>
-                  <div>
-                    <p className="text-[9px] text-[#444] uppercase tracking-[0.2em] mb-0.5 font-bold">{label}</p>
-                    <p className="text-xs text-[#888] group-hover:text-white transition-colors duration-200 font-medium">
-                      {value}
-                    </p>
-                  </div>
-                  <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    <div className="w-1.5 h-1.5 bg-[#DC0000]" />
-                  </div>
-                </a>
-              ))}
+              {links.map(({ label, value, href, icon }) => {
+                const isEmail = href.startsWith("mailto:");
+                return (
+                  <a
+                    key={label}
+                    href={href}
+                    {...(!isEmail && { target: "_blank", rel: "noopener noreferrer" })}
+                    className="flex items-center gap-4 p-4 bg-[#111] border border-white/[0.06] hover:border-[#DC0000]/50 hover:bg-[#161616] transition-all duration-200 group"
+                  >
+                    <div className="text-[#444] group-hover:text-[#DC0000] transition-colors duration-200">
+                      {icon}
+                    </div>
+                    <div>
+                      <p className="text-[9px] text-[#444] uppercase tracking-[0.2em] mb-0.5 font-bold">{label}</p>
+                      <p className="text-xs text-[#888] group-hover:text-white transition-colors duration-200 font-medium">
+                        {value}
+                      </p>
+                    </div>
+                    <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      {isEmail
+                        ? <span className="text-[9px] text-[#DC0000] uppercase tracking-widest font-bold">Open Mail ↗</span>
+                        : <div className="w-1.5 h-1.5 bg-[#DC0000]" />
+                      }
+                    </div>
+                  </a>
+                );
+              })}
             </div>
           </div>
 
