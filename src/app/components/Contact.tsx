@@ -86,25 +86,23 @@ export default function Contact() {
           </div>
 
           {/* Profile photo */}
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center mt-8 lg:mt-0">
             <div className="relative">
-              {/* Ferrari red corner accents */}
               <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-[#DC0000]" />
               <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-[#DC0000]" />
               <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-[#DC0000]" />
               <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-[#DC0000]" />
 
-              <div className="relative w-56 h-56 overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+              <div className="relative w-44 h-44 sm:w-56 sm:h-56 overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
                 <Image
                   src="/dp.jpeg"
                   alt="Gowtham Revanur"
                   fill
                   className="object-cover"
-                  sizes="224px"
+                  sizes="(max-width: 640px) 176px, 224px"
                 />
               </div>
 
-              {/* Name plate */}
               <div className="absolute -bottom-4 left-0 right-0 flex">
                 <div className="flex-1 bg-[#DC0000] px-3 py-1.5">
                   <p className="text-white text-[9px] font-black tracking-[0.2em] uppercase">Gowtham Revanur</p>

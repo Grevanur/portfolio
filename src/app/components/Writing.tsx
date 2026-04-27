@@ -40,7 +40,7 @@ export default function Writing() {
             href="https://medium.com/@gautam.revanur"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:flex items-center gap-2 text-xs text-[#555] hover:text-[#DC0000] transition-colors tracking-widest uppercase"
+            className="flex items-center gap-2 text-xs text-[#555] hover:text-[#DC0000] transition-colors tracking-widest uppercase"
           >
             All Articles ↗
           </a>
