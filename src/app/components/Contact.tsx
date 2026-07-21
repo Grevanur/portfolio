@@ -62,6 +62,7 @@ export default function Contact() {
                 key={l.label}
                 href={l.href}
                 {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="spot"
                 style={{ display: "flex", alignItems: "center", gap: 16, padding: "18px 22px", background: "#0a0c0f" }}
               >
                 {l.icon}

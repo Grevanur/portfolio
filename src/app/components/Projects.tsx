@@ -51,7 +51,7 @@ export default function Projects() {
           Selected Projects
         </h2>
         <span style={{ flex: 1, height: 1, background: "rgba(255,255,255,.08)", marginBottom: 10 }} />
-        <a href="https://github.com/Grevanur" target="_blank" rel="noopener noreferrer" style={{ fontFamily: mono, fontSize: 11, letterSpacing: ".14em", textTransform: "uppercase", color: "#5a636d" }}>
+        <a href="https://github.com/Grevanur" target="_blank" rel="noopener noreferrer" className="link-sweep" style={{ fontFamily: mono, fontSize: 11, letterSpacing: ".14em", textTransform: "uppercase", color: "#5a636d" }}>
           All repos ↗
         </a>
       </div>
@@ -64,6 +64,7 @@ export default function Projects() {
             target="_blank"
             rel="noopener noreferrer"
             data-reveal
+            className="spot"
             style={{
               display: "flex",
               flexDirection: "column",
@@ -90,7 +91,7 @@ export default function Projects() {
                 </span>
               ))}
             </div>
-            <div style={{ marginTop: 24, fontFamily: mono, fontSize: 11, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--accent)" }}>
+            <div className="link-sweep" style={{ marginTop: 24, display: "inline-flex", fontFamily: mono, fontSize: 11, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--accent)" }}>
               View on GitHub →
             </div>
           </a>

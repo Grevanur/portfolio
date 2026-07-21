@@ -141,7 +141,7 @@ export default function Experience() {
         }}
       >
         {education.map((e) => (
-          <div key={e.degree} data-reveal style={{ background: "#0a0c0f", padding: 26 }}>
+          <div key={e.degree} data-reveal className="spot" style={{ background: "#0a0c0f", padding: 26 }}>
             <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: ".2em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 12 }}>
               {e.period}
             </div>

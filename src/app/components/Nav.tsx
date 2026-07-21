@@ -13,11 +13,16 @@ const links = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const close = () => setOpen(false);
-    window.addEventListener("scroll", close, { passive: true, capture: true });
-    return () => window.removeEventListener("scroll", close, { capture: true } as EventListenerOptions);
+    const onScroll = () => {
+      setOpen(false);
+      setScrolled(window.scrollY > 8);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true, capture: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll, { capture: true } as EventListenerOptions);
   }, []);
 
   return (
@@ -28,10 +33,12 @@ export default function Nav() {
         left: 0,
         right: 0,
         zIndex: 50,
-        background: "rgba(8,9,11,.72)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
+        background: scrolled ? "rgba(8,9,11,.88)" : "rgba(8,9,11,.72)",
+        backdropFilter: scrolled ? "blur(18px) saturate(150%)" : "blur(14px)",
+        WebkitBackdropFilter: scrolled ? "blur(18px) saturate(150%)" : "blur(14px)",
         borderBottom: "1px solid rgba(255,255,255,.06)",
+        boxShadow: scrolled ? "0 8px 30px rgba(0,0,0,.35)" : "none",
+        transition: "background .4s ease, box-shadow .4s ease, backdrop-filter .4s ease",
       }}
     >
       <div
@@ -79,7 +86,7 @@ export default function Nav() {
             style={{ alignItems: "center", gap: 30, fontFamily: mono, fontSize: 11, letterSpacing: ".18em", textTransform: "uppercase" }}
           >
             {links.map(([label, href]) => (
-              <a key={href} href={href} style={{ color: "#8a9099" }}>
+              <a key={href} href={href} className="navlink" style={{ color: "#8a9099" }}>
                 {label}
               </a>
             ))}

@@ -61,3 +61,69 @@ a:hover { color: #e6e9ec; }
   }
   [data-reveal].is-in { opacity: 1; transform: none; }
 }
+
+/* film grain — fixed overlay, static SVG noise blended over everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: .035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+@media (max-width: 768px) { body::before { opacity: .025; } }
+
+/* thin accent-tinted scrollbar */
+html { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.16) transparent; }
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,.14); border: 3px solid transparent; border-radius: 10px; background-clip: padding-box; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.26); background-clip: padding-box; }
+
+/* cursor-tracked spotlight — pair with [data-mx]/[data-my] set by ScrollFx pointermove */
+.spot { position: relative; --mx: 50%; --my: 50%; }
+.spot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .4s ease;
+  background: radial-gradient(260px circle at var(--mx) var(--my), color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%);
+}
+.spot:hover::before { opacity: 1; }
+@media (hover: none) { .spot:hover::before { opacity: 0; } }
+
+/* ticker: pause the marquee on hover */
+.ticker:hover .tick-track { animation-play-state: paused; }
+
+/* underline sweep — nav links */
+.navlink { position: relative; }
+.navlink::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%; bottom: -6px;
+  height: 1px;
+  background: var(--accent);
+  transition: right .38s cubic-bezier(.22,.72,.18,1);
+}
+.navlink:hover::after { right: 0; }
+
+/* underline sweep — generic text links (CTAs, "view on github", etc.) */
+.link-sweep { position: relative; }
+.link-sweep::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -3px;
+  height: 1px; width: 0;
+  background: var(--accent);
+  transition: width .35s cubic-bezier(.22,.72,.18,1);
+}
+.link-sweep:hover::after { width: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tick-track { animation: none !important; }
+}

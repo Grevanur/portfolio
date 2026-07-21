@@ -37,7 +37,7 @@ export default function Skills() {
         }}
       >
         {groups.map((g) => (
-          <div key={g.title} data-reveal style={{ background: "#0a0c0f", padding: 28 }}>
+          <div key={g.title} data-reveal className="spot" style={{ background: "#0a0c0f", padding: 28 }}>
             <div style={{ fontFamily: mono, fontSize: 11, letterSpacing: ".2em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 20 }}>
               {g.title}
             </div>

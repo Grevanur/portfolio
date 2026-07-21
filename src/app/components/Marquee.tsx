@@ -9,6 +9,7 @@ export default function Marquee() {
   const row = [...items, ...items];
   return (
     <div
+      className="ticker"
       style={{
         position: "relative",
         zIndex: 1,
@@ -17,9 +18,12 @@ export default function Marquee() {
         padding: "16px 0",
         overflow: "hidden",
         background: "#0a0c0f",
+        maskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)",
+        WebkitMaskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)",
       }}
     >
       <div
+        className="tick-track"
         style={{
           display: "flex",
           width: "max-content",
