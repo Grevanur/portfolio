@@ -97,6 +97,13 @@ export default function Hero() {
             </div>
           ))}
         </div>
+
+        <a href="#loop" className="obf obf5" style={{ display: "flex", justifyContent: "center", marginTop: 64 }} aria-label="Scroll to see how I approach AI governance">
+          <span className="scroll-cue">
+            <span className="line" />
+            <span style={{ fontFamily: mono, fontSize: 10, letterSpacing: ".2em", textTransform: "uppercase", color: "#5a636d" }}>Scroll</span>
+          </span>
+        </a>
       </div>
     </header>
   );

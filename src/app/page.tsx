@@ -1,6 +1,7 @@
 import ScrollFx from "./components/ScrollFx";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
+import Journey from "./components/Journey";
 import Marquee from "./components/Marquee";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
@@ -48,6 +49,7 @@ export default function Home() {
 
       <Nav />
       <Hero />
+      <Journey />
       <Marquee />
       <Experience />
       <Projects />

@@ -127,3 +127,61 @@ html { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.16) transparent
 @media (prefers-reduced-motion: reduce) {
   .tick-track { animation: none !important; }
 }
+
+/* ============ JOURNEY — scroll-driven "how I approach it" story ============ */
+.journey { position: relative; height: 420vh; }
+.jview {
+  position: sticky; top: 0;
+  height: 100vh; height: 100svh;
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 30%, #101017 0%, var(--bg) 62%);
+  z-index: 1;
+}
+.journey canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.jpanel {
+  position: absolute;
+  left: max(28px, calc(50% - 560px)); right: max(28px, calc(50% - 560px));
+  bottom: clamp(64px, 14vh, 140px);
+  max-width: 640px;
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity .1s linear, transform .1s linear;
+}
+.jrail {
+  position: absolute; right: clamp(18px,4vw,56px); top: 50%; transform: translateY(-50%);
+  z-index: 2; display: flex; flex-direction: column; align-items: flex-end;
+}
+.jrail .lbl {
+  font-family: var(--font-mono), monospace; font-size: 10px; letter-spacing: .3em;
+  text-transform: uppercase; color: #4a525b; transition: color .3s ease;
+}
+.jrail .bar { width: 1px; height: 44px; background: rgba(255,255,255,.08); margin: 8px 4px; position: relative; overflow: hidden; }
+.jrail .bar i { position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background: var(--accent); display: block; }
+
+/* scroll cue under the hero, pointing at the story */
+@keyframes obDrip { 0% { top: -100%; } 60%, 100% { top: 100%; } }
+.scroll-cue { display: inline-flex; flex-direction: column; align-items: center; gap: 10px; }
+.scroll-cue .line { width: 1px; height: 40px; background: linear-gradient(rgba(255,255,255,.28), transparent); overflow: hidden; position: relative; }
+.scroll-cue .line::after {
+  content: ""; position: absolute; left: 0; top: -100%; width: 1px; height: 100%;
+  background: linear-gradient(transparent, var(--accent)); animation: obDrip 2.4s ease-in-out infinite;
+}
+
+@media (max-width: 760px) {
+  .jrail { display: none; }
+  .jpanel { left: 24px; right: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journey { height: auto; }
+  .jview { position: relative; height: auto; overflow: visible; padding: 90px 0; }
+  .journey canvas { display: none; }
+  .jpanel {
+    position: relative; left: auto; right: auto; bottom: auto;
+    opacity: 1 !important; transform: none !important;
+    margin: 0 auto 64px; padding: 0 28px; pointer-events: auto;
+  }
+  .jrail { display: none; }
+  .scroll-cue .line::after { animation: none; }
+}
