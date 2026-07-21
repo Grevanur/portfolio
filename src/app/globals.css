@@ -1,95 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0d0d0d;
-  --foreground: #f0f0f0;
-  --ferrari-red: #DC0000;
-  --ferrari-yellow: #FFF200;
-  --carbon: #1a1a1a;
+  --accent: #6fd6e8;
+  --bg: #08090b;
 }
 
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  background: var(--bg);
+  color: #e6e9ec;
+  font-family: var(--font-plex), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: #e6e9ec; }
+::selection { background: var(--accent); color: #08090b; }
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* Carbon fiber texture */
-.carbon-bg {
-  background-color: #111;
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 2px,
-      rgba(255,255,255,0.015) 2px,
-      rgba(255,255,255,0.015) 4px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 2px,
-      rgba(255,255,255,0.015) 2px,
-      rgba(255,255,255,0.015) 4px
-    );
-}
-
-/* Racing stripe divider */
-.racing-stripe {
-  height: 3px;
-  background: linear-gradient(90deg, transparent 0%, #DC0000 20%, #DC0000 80%, transparent 100%);
-}
-
-.racing-stripe-full {
-  height: 2px;
-  background: linear-gradient(90deg, #DC0000 60%, #FFF200 60%, #FFF200 70%, transparent 70%);
-}
-
-/* Red glow on hover */
-.card-ferrari:hover {
-  box-shadow: 0 0 0 1px rgba(220, 0, 0, 0.5), 0 8px 32px rgba(220, 0, 0, 0.15);
-}
-
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(24px); }
+@keyframes obFade {
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-@keyframes speed-line {
-  from { transform: translateX(-100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+@keyframes obMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes obPulse {
+  0%, 100% { opacity: .5; }
+  50% { opacity: 1; }
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+.obf { animation: obFade .8s cubic-bezier(.2,.7,.2,1) both; }
+.obf1 { animation-delay: .05s; }
+.obf2 { animation-delay: .15s; }
+.obf3 { animation-delay: .28s; }
+.obf4 { animation-delay: .42s; }
+.obf5 { animation-delay: .56s; }
+
+.desknav { display: flex; }
+.mobnav { display: none; }
+
+@media (max-width: 820px) {
+  .desknav { display: none !important; }
+  .mobnav { display: flex !important; }
+}
+@media (max-width: 760px) {
+  .exp-row { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .write-row { grid-template-columns: 1fr !important; gap: 10px !important; }
+  .write-row .write-cta { display: none; }
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #DC0000, #ff4444, #FFF200);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 3s ease infinite;
-}
-
-.fade-up { animation: fade-up 0.7s ease forwards; }
-.fade-up-delay-1 { animation-delay: 0.1s; opacity: 0; }
-.fade-up-delay-2 { animation-delay: 0.25s; opacity: 0; }
-.fade-up-delay-3 { animation-delay: 0.4s; opacity: 0; }
-.fade-up-delay-4 { animation-delay: 0.55s; opacity: 0; }
-
-.speed-line {
-  animation: speed-line 0.8s ease forwards;
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity .85s cubic-bezier(.16,.8,.24,1), transform .85s cubic-bezier(.16,.8,.24,1);
+    will-change: opacity, transform;
+  }
+  [data-reveal].is-in { opacity: 1; transform: none; }
 }

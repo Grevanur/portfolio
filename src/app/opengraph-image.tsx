@@ -1,16 +1,18 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Gowtham Revanur — Security Engineer & Embedded Systems Developer";
+export const alt = "Gowtham Revanur — AI Governance & IT Risk";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+const ACCENT = "#6fd6e8";
 
 export default function OGImage() {
   return new ImageResponse(
     (
       <div
         style={{
-          background: "#0d0d0d",
+          background: "#08090b",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -20,38 +22,41 @@ export default function OGImage() {
           position: "relative",
         }}
       >
-        {/* Red top bar */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 6, background: "#DC0000" }} />
+        {/* accent top line */}
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: ACCENT }} />
 
-        {/* Scuderia tag */}
-        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 32 }}>
-          <div style={{ background: "#DC0000", padding: "6px 14px" }}>
-            <span style={{ color: "white", fontSize: 14, fontWeight: 900, letterSpacing: "0.2em", textTransform: "uppercase" }}>
-              Scuderia
+        {/* status tag */}
+        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 34 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, border: `1px solid ${ACCENT}`, padding: "6px 14px" }}>
+            <div style={{ width: 10, height: 10, borderRadius: 5, background: ACCENT }} />
+            <span style={{ color: ACCENT, fontSize: 14, fontWeight: 600, letterSpacing: "0.22em", textTransform: "uppercase" }}>
+              Open to roles · May 2027
             </span>
           </div>
-          <span style={{ color: "#555", fontSize: 13, letterSpacing: "0.3em", textTransform: "uppercase" }}>
+          <span style={{ color: "#6b7178", fontSize: 13, letterSpacing: "0.28em", textTransform: "uppercase" }}>
             Atlanta, GA · Georgia State University
           </span>
         </div>
 
-        {/* Name */}
-        <div style={{ fontSize: 96, fontWeight: 900, color: "white", lineHeight: 1, letterSpacing: "0.03em", textTransform: "uppercase" }}>
+        {/* name */}
+        <div style={{ fontSize: 92, fontWeight: 600, color: "#f4f6f8", lineHeight: 1, letterSpacing: "-0.02em", display: "flex" }}>
           Gowtham
         </div>
-        <div style={{ fontSize: 96, fontWeight: 900, color: "#DC0000", lineHeight: 1, letterSpacing: "0.03em", textTransform: "uppercase", marginBottom: 40 }}>
+        <div style={{ fontSize: 92, fontWeight: 600, color: "#7a828b", lineHeight: 1, letterSpacing: "-0.02em", marginBottom: 36, display: "flex" }}>
           Revanur
         </div>
 
-        {/* Stripe */}
-        <div style={{ display: "flex", marginBottom: 40 }}>
-          <div style={{ height: 3, width: 200, background: "#DC0000" }} />
-          <div style={{ height: 3, width: 60, background: "#FFF200" }} />
+        {/* accent divider */}
+        <div style={{ display: "flex", marginBottom: 30 }}>
+          <div style={{ height: 2, width: 220, background: ACCENT }} />
         </div>
 
-        {/* Tagline */}
-        <div style={{ color: "#888", fontSize: 22, letterSpacing: "0.05em" }}>
-          Security Engineering · Embedded Systems · Real-Time Detection
+        {/* tagline */}
+        <div style={{ color: "#c8ced4", fontSize: 30, letterSpacing: "-0.01em", display: "flex" }}>
+          AI Governance &amp; IT Risk
+        </div>
+        <div style={{ color: "#8a9099", fontSize: 20, letterSpacing: "0.02em", marginTop: 14, display: "flex" }}>
+          GRC · LLM Security · Trustworthy AI · Hagan Scholar
         </div>
       </div>
     ),

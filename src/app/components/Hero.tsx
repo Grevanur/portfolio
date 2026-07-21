@@ -1,109 +1,103 @@
+const mono = "var(--font-mono), monospace";
+const space = "var(--font-space), sans-serif";
+
+const stats = [
+  { label: "GPA", value: "3.90", sub: "/4.00", subInline: true },
+  { label: "Recognition", value: "Hagan Scholar", sub: "1 of 20 globally" },
+  { label: "Scope", value: "180M+", sub: "demat accounts safeguarded" },
+  { label: "Certified", value: "Security+", sub: "+ 4 more" },
+];
+
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-5 sm:px-6 pt-24 pb-16 relative overflow-hidden">
-      {/* Background racing lines */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-0 w-1/3 h-[1px] bg-gradient-to-r from-transparent to-[#DC0000]/20" />
-        <div className="absolute top-1/2 right-0 w-1/3 h-[1px] bg-gradient-to-l from-transparent to-[#DC0000]/20" />
-        <div className="absolute bottom-1/3 left-0 w-1/4 h-[1px] bg-gradient-to-r from-transparent to-[#FFF200]/10" />
-        <div className="absolute top-1/4 left-[10%] w-px h-32 bg-gradient-to-b from-transparent via-[#DC0000]/20 to-transparent" />
-        <div className="absolute top-1/4 right-[10%] w-px h-32 bg-gradient-to-b from-transparent via-[#DC0000]/20 to-transparent" />
-      </div>
-
-      <div className="w-full max-w-4xl mx-auto text-center space-y-5 relative z-10">
-        {/* Race tag */}
-        <div className="fade-up fade-up-delay-1 inline-flex items-center gap-2 sm:gap-3 flex-wrap justify-center">
-          <div className="bg-[#DC0000] px-3 py-1">
-            <span className="text-white text-[10px] sm:text-xs font-black tracking-widest uppercase">Scuderia</span>
-          </div>
-          <span className="text-[10px] sm:text-xs text-[#555] tracking-[0.2em] sm:tracking-[0.3em] uppercase">
-            Atlanta, GA · Georgia State University
-          </span>
+    <header
+      id="top"
+      style={{ position: "relative", zIndex: 1, maxWidth: 1160, margin: "0 auto", padding: "180px 28px 90px" }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          top: 60,
+          right: -120,
+          width: 520,
+          height: 520,
+          background: "radial-gradient(circle, color-mix(in srgb, var(--accent) 16%, transparent), transparent 62%)",
+          filter: "blur(20px)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      <div style={{ position: "relative", zIndex: 1 }}>
+        <div
+          className="obf obf1"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            marginBottom: 34,
+            fontFamily: mono,
+            fontSize: 11,
+            letterSpacing: ".28em",
+            textTransform: "uppercase",
+            color: "var(--accent)",
+          }}
+        >
+          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--accent)", animation: "obPulse 2.4s ease-in-out infinite" }} />
+          Open to full-time roles · May 2027
+          <span style={{ color: "#4a525b" }}>/</span>
+          <span style={{ color: "#6b7178" }}>Atlanta, GA</span>
         </div>
 
-        {/* Name */}
-        <h1 className="fade-up fade-up-delay-2 leading-none uppercase" style={{ fontFamily: "var(--font-bebas)" }}>
-          <span className="block text-[68px] sm:text-[110px] md:text-[140px] text-white tracking-[0.05em]">
-            Gowtham
-          </span>
-          <span className="block text-[68px] sm:text-[110px] md:text-[140px] tracking-[0.05em] gradient-text">
-            Revanur
-          </span>
+        <h1
+          className="obf obf2"
+          style={{ margin: 0, fontFamily: space, fontWeight: 500, fontSize: "clamp(48px,8.5vw,110px)", lineHeight: 0.94, letterSpacing: "-.03em", color: "#f4f6f8" }}
+        >
+          Gowtham
+          <br />
+          <span style={{ color: "#7a828b" }}>Revanur</span>
         </h1>
 
-        {/* Tagline */}
-        <p className="fade-up fade-up-delay-3 text-sm sm:text-lg text-[#888] max-w-xl mx-auto leading-relaxed font-light">
-          Graduate CS · Georgia State University
-          <br />
-          <span className="text-[#f0f0f0]">Embedded Systems · Security Engineering · Real-Time Detection</span>
+        <p
+          className="obf obf3"
+          style={{ margin: "30px 0 0", fontFamily: space, fontSize: "clamp(19px,2.6vw,30px)", fontWeight: 400, lineHeight: 1.35, letterSpacing: "-.01em", color: "#c8ced4", maxWidth: 720 }}
+        >
+          AI Governance &amp; IT Risk. I build the controls that let organizations{" "}
+          <span style={{ color: "var(--accent)" }}>trust</span> the intelligence they deploy — from
+          financial-market AI policy to source-verifiable LLM systems.
         </p>
 
-        {/* Racing stripe */}
-        <div className="fade-up fade-up-delay-3 flex items-center justify-center mx-auto w-48">
-          <div className="h-[2px] flex-1 bg-[#DC0000]" />
-          <div className="h-[2px] w-8 bg-[#FFF200]" />
-          <div className="h-[2px] w-4 bg-white/20" />
-        </div>
+        <p className="obf obf3" style={{ margin: "22px 0 0", fontSize: 15, lineHeight: 1.7, color: "#8a9099", maxWidth: 640 }}>
+          M.S. Computer Science at Georgia State University · Hagan Scholar · drafting one of India&apos;s
+          first comprehensive AI governance frameworks for the financial markets at CDSL.
+        </p>
 
-        {/* CTAs */}
-        <div className="fade-up fade-up-delay-4 flex flex-col sm:flex-row items-center justify-center gap-3 pt-1">
-          <a
-            href="#projects"
-            className="w-full sm:w-auto px-8 py-3 bg-[#DC0000] hover:bg-[#ff1111] text-white text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200 hover:shadow-lg hover:shadow-[#DC0000]/30 text-center"
-          >
-            View Projects
+        <div className="obf obf4" style={{ display: "flex", flexWrap: "wrap", gap: 14, marginTop: 38 }}>
+          <a href="#work" style={{ fontFamily: mono, fontSize: 12, letterSpacing: ".12em", textTransform: "uppercase", background: "var(--accent)", color: "#08090b", padding: "14px 24px", fontWeight: 500 }}>
+            View Work →
           </a>
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto px-8 py-3 border border-[#FFF200]/40 text-[#FFF200] hover:bg-[#FFF200]/10 hover:border-[#FFF200]/70 text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200 text-center"
-          >
-            ↓ Download Resume
-          </a>
-          <a
-            href="#contact"
-            className="w-full sm:w-auto px-8 py-3 border border-white/10 hover:border-white/30 text-[#888] hover:text-white text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200 text-center"
-          >
+          <a href="#contact" style={{ fontFamily: mono, fontSize: 12, letterSpacing: ".12em", textTransform: "uppercase", color: "#c5cbd1", border: "1px solid rgba(255,255,255,.16)", padding: "14px 24px" }}>
             Get in Touch
           </a>
         </div>
 
-        {/* Telemetry stats — 2x2 on mobile, row on sm+ */}
-        <div className="fade-up fade-up-delay-4 pt-6">
-          {/* Mobile: 2x2 grid */}
-          <div className="grid grid-cols-2 gap-3 sm:hidden">
-            {[
-              { label: "GPA", value: "3.90" },
-              { label: "Status", value: "Hagan Scholar" },
-              { label: "Cert", value: "Security+" },
-              { label: "Avail", value: "May 2027", sub: "Open to internships now" },
-            ].map(({ label, value, sub }) => (
-              <div key={label} className="text-center p-3 border border-white/[0.05] bg-white/[0.02]">
-                <p className="text-[9px] text-[#DC0000] tracking-[0.2em] uppercase mb-1">{label}</p>
-                <p className="text-xs text-[#aaa] font-medium leading-tight">{value}</p>
-                {sub && <p className="text-[9px] text-[#555] mt-0.5 leading-tight">{sub}</p>}
+        <div
+          className="obf obf5"
+          style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 1, marginTop: 56, background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.06)" }}
+        >
+          {stats.map((s) => (
+            <div key={s.label} style={{ background: "#0a0c0f", padding: "20px 22px" }}>
+              <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: ".2em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 8 }}>
+                {s.label}
               </div>
-            ))}
-          </div>
-
-          {/* Desktop: horizontal strip */}
-          <div className="hidden sm:flex items-center justify-center divide-x divide-white/10">
-            {[
-              { label: "GPA", value: "3.90" },
-              { label: "Status", value: "Hagan Scholar" },
-              { label: "Cert", value: "Security+" },
-              { label: "Avail", value: "May 2027", sub: "Open to internships now" },
-            ].map(({ label, value, sub }) => (
-              <div key={label} className="px-5 first:pl-0 last:pr-0 text-center">
-                <p className="text-[10px] text-[#DC0000] tracking-[0.2em] uppercase mb-1">{label}</p>
-                <p className="text-xs text-[#aaa] font-medium">{value}</p>
-                {sub && <p className="text-[9px] text-[#555] mt-0.5">{sub}</p>}
+              <div style={{ fontFamily: space, fontSize: 22, color: "#e6e9ec" }}>
+                {s.value}
+                {s.subInline && <span style={{ color: "#5a636d", fontSize: 14 }}>{s.sub}</span>}
               </div>
-            ))}
-          </div>
+              {!s.subInline && <div style={{ fontSize: 11, color: "#5a636d", marginTop: 3 }}>{s.sub}</div>}
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+    </header>
   );
 }

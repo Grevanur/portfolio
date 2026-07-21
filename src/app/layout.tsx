@@ -1,50 +1,53 @@
 import type { Metadata } from "next";
-import { Inter, Bebas_Neue } from "next/font/google";
+import { Space_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space",
 });
 
-const bebasNeue = Bebas_Neue({
-  weight: "400",
+const plexSans = IBM_Plex_Sans({
   subsets: ["latin"],
-  variable: "--font-bebas",
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-plex",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
-  title: "Gowtham Revanur",
+  title: "Gowtham Revanur — AI Governance & IT Risk",
   description:
-    "Graduate CS student at Georgia State University specializing in cybersecurity, embedded systems, and real-time security engineering. Open to roles starting May 2027.",
+    "M.S. Computer Science at Georgia State University · Hagan Scholar. AI Governance, IT Risk & GRC, and security engineering. Building the controls that let organizations trust the intelligence they deploy.",
   openGraph: {
-    title: "Gowtham Revanur — Security Engineer & Embedded Systems Developer",
+    title: "Gowtham Revanur — AI Governance & IT Risk",
     description:
-      "Graduate CS student at GSU (GPA 3.90) · Hagan Scholar · Building safety-critical firmware, cloud-native threat detection, and ML-based intrusion systems.",
-    url: "https://portfolio-grevanur.vercel.app",
+      "AI Governance, IT Risk & GRC, security engineering. GSU M.S. (GPA 3.90) · Hagan Scholar · drafting AI governance frameworks for the financial markets at CDSL.",
     siteName: "Gowtham Revanur",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gowtham Revanur — Security Engineer & Embedded Systems Developer",
-    description:
-      "Graduate CS student at GSU · Hagan Scholar · Security Engineering · Embedded Systems · Real-Time Detection",
+    title: "Gowtham Revanur — AI Governance & IT Risk",
+    description: "AI Governance · IT Risk & GRC · Security Engineering · GSU M.S. · Hagan Scholar",
   },
-  metadataBase: new URL("https://portfolio-grevanur.vercel.app"),
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${bebasNeue.variable} h-full antialiased`}>
-      <body className="min-h-full bg-[#0a0a0a] text-[#ededed] font-[var(--font-inter)]">
-        {children}
-      </body>
+    <html
+      lang="en"
+      className={`${spaceGrotesk.variable} ${plexSans.variable} ${plexMono.variable}`}
+    >
+      <body>{children}</body>
     </html>
   );
 }
